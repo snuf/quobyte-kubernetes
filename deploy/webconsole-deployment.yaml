@@ -1,9 +1,13 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webconsole
   namespace: quobyte
 spec:
+  selector:
+    matchLabels:
+      role: webconsole
+      version: "2"
   template:
     metadata:
       labels:

@@ -1,12 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: registry
   namespace: quobyte
 spec:
+  selector:
+    matchLabels:
+      name: registry
+      role: registry
+      version: "2"
   template:
     metadata:
       labels:
+        name: registry
         role: registry
         version: "2"
     spec:

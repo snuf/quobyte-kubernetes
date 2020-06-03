@@ -1,9 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: metadata
   namespace: quobyte
 spec:
+  selector:
+    matchLabels:
+      name: metadata
+      role: metadata
+      version: "2"
   template:
     metadata:
       annotations:
@@ -11,6 +16,7 @@ spec:
         prometheus.io/path: '/prometheus'
         prometheus.io/port: '7872'
       labels:
+        name: metadata
         role: metadata
         version: "2"
     spec:
